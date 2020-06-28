@@ -25,7 +25,7 @@ public class Question605 {
 
   public static void main(String[] args) {
     Solution01 s01 = new Solution01();
-    boolean result = s01.canPlaceFlowers(new int[]{1,0,0,1,0,0,0},1);
+    boolean result = s01.canPlaceFlowers(new int[]{1,0,0,1,0,0,0,0},1);
     System.out.println(result);
   }
 }
