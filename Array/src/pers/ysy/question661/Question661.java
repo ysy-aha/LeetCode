@@ -24,7 +24,7 @@ package pers.ysy.question661;
  * @Author ysy
  * @Date 2020/7/2
  **/
-public class question661 {
+public class Question661 {
   public static void main(String[] args) {
     Solution01 s01 = new Solution01();
     int[][] M = {{2,3,4},{5,6,7},{8,9,10},{11,12,13},{14,15,16}};
