@@ -1,4 +1,4 @@
-package pers.ysy.section0.Question07;
+package pers.ysy.section0.question07;
 
 /**
  * @author ysy

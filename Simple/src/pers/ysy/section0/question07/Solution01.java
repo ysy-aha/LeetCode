@@ -1,4 +1,4 @@
-package pers.ysy.section0.Question07;
+package pers.ysy.section0.question07;
 
 /**
  * 将Integer.MAX_VALUE和Integer.MIN_VALUE转换成字符串
