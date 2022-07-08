@@ -1,4 +1,4 @@
-package pers.yshy.simple.section50.question00026;
+package pers.yshy.section200.question00026;
 
 /**
  * 执行用时：491 ms, 在所有 Java 提交中击败了5.09%的用户

@@ -1,4 +1,4 @@
-package pers.yshy.simple.section50.question00026;
+package pers.yshy.section200.question00026;
 
 import java.util.Arrays;
 
