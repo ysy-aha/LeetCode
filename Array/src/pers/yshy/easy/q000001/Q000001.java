@@ -13,54 +13,49 @@ import java.util.Map;
 public class Q000001 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 7, 11, 15};
-        int target = 9;
-        int[] res = twoSum1(nums, target);
-        System.out.println(res[0] + " :: " + res[1]);
+        int target;
+        int[] nums;
+        int[] res;
 
+        target = 9;
+        nums = new int[]{2, 7, 11, 15};
+        res = twoSum(nums, target);
+        System.out.println(Arrays.toString(res));
+
+        target = 6;
         nums = new int[]{3, 2, 4};
-        target = 6;
-        res = twoSum1(nums, target);
-        System.out.println(res[0] + " :: " + res[1]);
+        res = twoSum(nums, target);
+        System.out.println(Arrays.toString(res));
 
-        nums = new int[]{3, 3};
         target = 6;
-        res = twoSum1(nums, target);
-        System.out.println(res[0] + " :: " + res[1]);
+        nums = new int[]{3, 3};
+        res = twoSum(nums, target);
+        System.out.println(Arrays.toString(res));
     }
 
     /**
-     * 1. 循环，target-nums[i]=diff
-     * 2. 如果HashMap存在key=diff，输出[i,map.get(diff)]
-     * 3. 否则map.put(nums[i], i)
+     * 循环
+     * 创建一个Map，将target-nums[i]的值作为key，下标作为value
+     * 遇到map.containKey(nums[i])==true时，取value和i
      *
-     * 用时：5 ms，击败：49.91%
-     * 内存：42.6 MB，击败：5%
+     * 时间 2 ms，击败 76.95%
+     * 内存 41.2 MB，击败 97.72%
      *
      * @param nums
      * @param target
      * @return
      */
-    private static int[] twoSum1(int[] nums, int target) {
-        int len = nums.length;
-        Map<Integer, Integer> map = new HashMap<>(len);
-        int[] res = new int[2];
-        for (int i = 0; i < len; i++) {
-            int diff = target - nums[i];
-            if (map.containsKey(diff)) {
-                res[1] = i;
-                res[0] = map.get(diff);
-            } else {
-                map.put(nums[i], i);
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                return new int[]{map.get(nums[i]), i};
             }
+            map.put(target - nums[i], i);
         }
-        return res;
+        return new int[]{0, 0};
     }
 }
 
-/*
-1. 首先想到嵌套循环，但是可能会超时
-2. 可以使用HashMap的Key，但是无法处理数组中的重复值
 
 
- */

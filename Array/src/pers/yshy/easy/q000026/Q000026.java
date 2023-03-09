@@ -23,31 +23,28 @@ public class Q000026 {
     }
 
     /**
-     * 双指针：l，r，t
-     * 假如 t=nums[0]，如果nums[1]=t，l=1，r从l+1往后走，
-     * 遇到nums[r]>t，nums[l]与nums[r]交换，t=nums[l]，l往后走，遇到nums[l]<=t就停下，继续上面的操作
+     * 双指针，
+     * 同时出发，第一个a停在第一个重复的数据处，第二个b往后走
+     * b遇到与前一个值不同的就替换a，然后a++，b继续往后走
      * <p>
-     * 时间：0 ms，击败：100%
-     * 内存：43.1 MB，击败：43.77%
+     * 时间 0 ms, 击败 100%
+     * 内存 43.2 MB, 击败 44%
      *
      * @param nums
      * @return
      */
-    private static int removeDuplicates(int[] nums) {
-        if (nums.length == 1) {
-            return 1;
-        }
-        int l = 1;
-        int r = 1;
-        int t = nums[0];
-        while (r < nums.length) {
-            if (nums[r] > t) {
-                nums[l] = nums[r];
-                t = nums[r];
-                l++;
+    public static int removeDuplicates(int[] nums) {
+        int font = 1;
+        int behind = 1;
+        while (font < nums.length) {
+            if (nums[font] != nums[font - 1]) {
+                if (font != behind) {
+                    nums[behind] = nums[font];
+                }
+                behind++;
             }
-            r++;
+            font++;
         }
-        return l;
+        return behind;
     }
 }
