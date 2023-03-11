@@ -41,30 +41,55 @@ public class Q000027 {
     }
 
     /**
-     * 循环，设置双指针，l,r
-     * l=0,r=0,如果nums[r]!=val,l++,r++
-     * 如果nums[r]==val,r++,nums[l]=nums[r],l++,r++
+     * 循环
+     * 设置双指针，一个在前，记录最近的指定值下标，一个在后，记录未移动的数据
      * <p>
-     * 时间：0 ms，击败：100%
-     * 内存：40.1 MB，击败：37.14%
+     * 时间 0 ms, 击败 100%
+     * 内存 40.2 MB, 击败 28.26%
      *
      * @param nums
      * @param val
      * @return
      */
-    private static int removeElement(int[] nums, int val) {
-        int l = 0;
-        int r = 0;
-        while (r < nums.length) {
-            if (nums[r] == val) {
-                r++;
-                continue;
+    public static int removeElement(int[] nums, int val) {
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        while (right < nums.length) {
+            if (nums[right] != val) {
+                if (left != right) {
+                    nums[left] = nums[right];
+                }
+                left++;
+            } else {
+                count++;
             }
-            nums[l] = nums[r];
-            l++;
-            r++;
+            right++;
         }
-        return l;
+        return nums.length - count;
+    }
+
+    /**
+     * 时间 0 ms, 击败 100%
+     * 内存 40.3 MB, 击败 19.70%
+     *
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int removeElement1(int[] nums, int val) {
+        int left = 0;
+        int right = 0;
+        while (right < nums.length) {
+            if (nums[right] != val) {
+                if (left != right) {
+                    nums[left] = nums[right];
+                }
+                left++;
+            }
+            right++;
+        }
+        return left;
     }
 
 }
