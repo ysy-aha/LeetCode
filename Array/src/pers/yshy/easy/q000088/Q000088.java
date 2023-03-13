@@ -39,33 +39,38 @@ public class Q000088 {
     }
 
     /**
-     * 根据测试，是递增数组
-     * 双指针：l=m-1，r=m+n-1
-     * nums2倒序，l往前移，如果nums1[l]>=nums2[i],nums1[r]=nums1[l],l--,r--;
-     * - 如果nums[l]<nums2[i],nums1[r]=nums2[i],r--,i--
-     * <p>
-     * 时间：0 ms，击败：100%
-     * 内存：41.2 MB，击败：79.95%
+     * 倒循环，最大的放在最后
+     * 设置三个标签，a、b、c，a表示nums1的下标，b表示nums2的下标，c表示结果数组的下标
+     *
+     * 时间 0 ms，击败 100%
+     * 内存 41.4 MB，击败 64.29%
      *
      * @param nums1
      * @param m
      * @param nums2
      * @param n
      */
-    private static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int l = m - 1;
-        int r = l + n;
-        for (int i = n - 1; i >= 0; i--) {
-            while (l >= 0) {
-                if (nums1[l] < nums2[i]) {
-                    break;
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int a = m - 1;
+        int b = n - 1;
+        int c = m + n - 1;
+        while (c >= 0) {
+            if (a >= 0 && b >= 0) {
+                if (nums1[a] <= nums2[b]) {
+                    nums1[c] = nums2[b];
+                    b--;
+                } else {
+                    nums1[c] = nums1[a];
+                    a--;
                 }
-                nums1[r] = nums1[l];
-                l--;
-                r--;
+            } else if (a < 0) {
+                nums1[c] = nums2[b];
+                b--;
+            } else {
+                nums1[c] = nums1[a];
+                a--;
             }
-            nums1[r] = nums2[i];
-            r--;
+            c--;
         }
     }
 }
