@@ -21,28 +21,24 @@ public class Q000118 {
     }
 
     /**
-     * 时间：0 ms，击败：100%
-     * 内存：39.2 MB，击败：54.68%
+     * 时间 1 ms，击败 85.66%
+     * 内存 40 MB，击败53.96%
      *
      * @param numRows
      * @return
      */
     private static List<List<Integer>> generate(int numRows) {
-        int height = 1;
         List<List<Integer>> res = new ArrayList<>();
-
-        while (height <= numRows) {
-            List<Integer> list = new ArrayList<>();
-            for (int i = 0; i < height; i++) {
-                if (i == 0 || i == height - 1) {
-                    list.add(1);
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> temp = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    temp.add(1);
                 } else {
-                    List<Integer> temp = res.get(height - 2);
-                    list.add(temp.get(i - 1) + temp.get(i));
+                    temp.add(res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));
                 }
             }
-            res.add(list);
-            height++;
+            res.add(temp);
         }
         return res;
     }
